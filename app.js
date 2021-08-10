@@ -23,6 +23,19 @@ const app = Vue.createApp({
             this.rotateX = 0
             this.rotateY = 0
             this.rotateZ = 0
+        },
+        copy() {
+            const element = document.createElement('textarea')
+
+            element.setAttribute('readonly', '')
+            element.style.position = 'absolute'
+            element.style.position = '-9999px'
+            element.value = `transform: ${this.box.transform}`
+
+            document.body.appendChild(element)
+            element.select()
+            document.execCommand('copy')
+            document.body.removeChild(element)
         }
     }
 }).mount('#app')
